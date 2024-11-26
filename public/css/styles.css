@@ -1,0 +1,29 @@
+nav {
+  background-color: #222831;
+}
+
+.nav-link {
+  color: #EEEEEE;
+}
+
+h1 {
+  font-family: 'Kemasyuran Jawa', sans-serif;
+  color: #E6DFDF;
+  font-size: 150px;
+}
+
+h2 {
+  font-family: 'Kemasyuran Jawa', sans-serif;
+  color: #E6DFDF;
+  font-size: 100px;
+  margin-bottom: 30px;
+}
+
+body {
+  background-color: #393E46;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #EEEEEE;
+}

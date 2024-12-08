@@ -1,29 +1,277 @@
-nav {
-  background-color: #222831;
+#landing {
+    background-color: #393E46;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #EEEEEE;
 }
 
-.nav-link {
-  color: #EEEEEE;
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.persewaan {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.perform {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, h2 {
+    font-family: 'Kemasyuran Jawa', sans-serif;
+    color: #E6DFDF;
+    margin-bottom: 30px;
 }
 
 h1 {
-  font-family: 'Kemasyuran Jawa', sans-serif;
-  color: #E6DFDF;
   font-size: 150px;
 }
 
 h2 {
-  font-family: 'Kemasyuran Jawa', sans-serif;
-  color: #E6DFDF;
   font-size: 100px;
-  margin-bottom: 30px;
 }
 
-body {
-  background-color: #393E46;
+nav {
+  background-color: #222831;
 }
 
-p {
-  font-family: Arial, Helvetica, sans-serif;
+.about {
+  width: 100%;
+}
+
+/* General styles for all nav links */
+.nav-link {
+  color: #ffffff; /* Default color for links */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Style for active nav link */
+.nav-link.active {
+  color: #E6DFDF !important; /* Highlight color for active link */
+  font-weight: bold; /* Make the active link bold */
+}
+
+/* Optional: Hover effect for links */
+.nav-link:hover {
+  color: #00ADB5; /* Same highlight color for hover */
+}
+
+
+
+.custom-swiper {
+  width: 60%; /* Atur lebar sesuai kebutuhan */
+  height: 70%; /* Atur tinggi sesuai kebutuhan */
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #393E46;
+}
+
+.card-image {
+  width: 100%; /* Atur gambar untuk responsif */
+  height: 100%; /* Membuat gambar mengisi seluruh ruang */
+  object-fit: cover; /* Membuat gambar tercrop dan terzoom */
+  object-position: center; /* Membuat gambar terfokus pada bagian tengah */
+}
+
+.card h3 {
+  position: absolute;
+  text-align: center;
+  bottom: 10px; /* Jarak teks dari bagian bawah gambar */
+  left: 30%;
+  transform: translateX(-50%);
+  font-family: 'Javassoul', sans-serif;
+  font-size: 50px;
+  color: #fff; /* Warna teks overlay */
+  padding: 5px 10px; /* Spasi di sekitar teks */
+  border-radius: 5px; /* Membuat sudut teks melengkung */
+}
+
+
+.btn-primary {
+  background-color: #00ADB5;
+  border: none;
+  padding: 10px 10px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  background-color: #222831;
   color: #EEEEEE;
+  padding: 20px 0;
+}
+
+footer a {
+  color: #EEEEEE;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.about-us {
+  padding: 150px 20px 50px; /* Tambahkan lebih banyak padding atas */
+  color: #fff; /* Warna teks */
+  font-family: Arial, sans-serif;
+  width: 100%; /* Memastikan lebar penuh */
+  text-align: left;
+}
+
+.about-us .container {
+  max-width: 100vh; /* Batas maksimum lebar */
+  margin: 0;
+}
+
+.about-us .container p {
+  width: 1000px;
+}
+
+
+
+.footer {
+  background-color: #1c1e21;
+  color: #fff;
+  padding: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.container-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section a {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #bbb;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #fff;
+}
+
+.footer-section i {
+  margin-right: 10px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  border-top: 1px solid #444;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+
+/* Background styling */
+#login {
+    background-color: #E6DFDF; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Login container */
+.login-container {
+    text-align: center;
+}
+
+
+.login-box {
+    background-color: rgba(217, 217, 217, 0.9); /* Semi-transparent light gray */
+    padding: 40px;
+    border-radius: 20px; /* Membuat sudut membulat */
+    width: 350px; /* Lebar kotak login */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+
+    /* Background image settings */
+    background: url('/assets/logo1.png') no-repeat center bottom; /* Path gambar */
+    background-size: 500px; /* Ukuran gambar latar */
+    position: relative;
+}
+
+
+.login-box h2 {
+    font-size: 45px;
+    margin-bottom: 25px;
+    color: #1c1e21;
+    font-family: 'Kemasyuran Jawa', sans-serif;
+    letter-spacing: 5px; /* Spasi antar huruf */
+    text-transform: uppercase; /* Semua huruf kapital */
+}
+
+/* Input fields */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 20px; /* Membuat input melengkung */
+    background-color: #333; /* Dark input background */
+    color: #fff; /* White text */
+    font-size: 16px;
+    font-family: 'Arial', sans-serif; /* Font input */
+}
+
+/* Button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #00bcd4; /* Teal color */
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+    border: none;
+    border-radius: 20px; /* Membuat tombol melengkung */
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px; /* Spasi antar huruf */
+    text-transform: uppercase; /* Semua huruf kapital */
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #0097a7; /* Darker teal */
 }

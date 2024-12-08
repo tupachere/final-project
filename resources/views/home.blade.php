@@ -1,128 +1,150 @@
 @extends('layouts.master')
 @section('title', 'Project WEB')
+
 @section('content')
 <head>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('image.png') }}">
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sanggar Rangga Adiwiyasa - Promoting Indonesian culture through dance and music.">
+    <meta name="author" content="Your Name">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 
-<body class="page-top">
+<body id="landing">
+    @include('layouts.navbar')
     <!-- Hero Section -->
-    <header class="text-black" style="background-image: url('{{ asset('assets/image.png') }}')">
-        <div class="container text-center">
-            <h1 class="fw-bolder">RANGGA ADIWIYASA</h1>
+    <header id="home" class="text-black" style="background-image: url('{{ asset('assets/image.png') }}'); background-size: cover; background-position: center;">
+        <div class="container text-center py-5">
+            <h1 class="fw-bolder">RONGGO <br>ADI WIYASA</h1>
         </div>
     </header>
 
-    <!-- About Section Hero -->
-    <section class="hero about-hero" style="background-image: url('image.png'); height: 400px;">
-        <div class="container text-center">
-            <h2 class="text-white">Persewaan</h2>
-            <p class="text-white">BOOK NOW</p>
-        </div>
-    </section>
-    <section class="about">
-        <div class="container px-4">
-            <div class="row gx-4 justify-content-center">
-                <div class="col-lg-8">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">Slide 1</div>
-                            <div class="swiper-slide">Slide 2</div>
-                            <div class="swiper-slide">Slide 3</div>
-                            <div class="swiper-slide">Slide 4</div>
-                            <div class="swiper-slide">Slide 5</div>
-                            <div class="swiper-slide">Slide 6</div>
-                            <div class="swiper-slide">Slide 7</div>
-                            <div class="swiper-slide">Slide 8</div>
-                            <div class="swiper-slide">Slide 9</div>
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section Hero -->
-    <section class="hero services-hero" style="background-image: url('path/to/your/image.jpg'); height: 400px;">
-        <div class="container text-center">
-            <h2 class="text-white">Jasa Perform</h2>
-            <p class="text-white">BOOK NOW</p>
-        </div>
-    </section>
-    <section class="bg-light" id="services">
-        <div class="container px-4">
-            <div class="row gx-4 justify-content-center">
-                <div class="col-lg-8">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">Slide 1</div>
-                            <div class="swiper-slide">Slide 2</div>
-                            <div class="swiper-slide">Slide 3</div>
-                            <div class="swiper-slide">Slide 4</div>
-                            <div class="swiper-slide">Slide 5</div>
-                            <div class="swiper-slide">Slide 6</div>
-                            <div class="swiper-slide">Slide 7</div>
-                            <div class="swiper-slide">Slide 8</div>
-                            <div class="swiper-slide">Slide 9</div>
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section Hero -->
-    <section class="about us">
+    <!-- About Section -->
+    <section id=product class="persewaan">
         <div class="container">
-                <div class="col-lg-10">
-                    <h2>About us</h2>
-                    <p>Sanggar Rangga Adiwiyasa adalah sanggar seni budaya yang berdiri sejak 2020 di Kelurahan Ngronggo, Kota Kediri,
-                        di bawah naungan Karang Taruna Remaja Jaya. Kami memiliki dua divisi utama, yaitu Tari dan Karawitan, masing-masing dengan tiga kelas untuk berbagai tingkat kemampuan. Sanggar ini aktif berkontribusi dalam pelestarian budaya melalui berbagai pagelaran seni, baik di dalam maupun di luar Kota Kediri, seperti Geni Budjari dan Pagelaran Candi Tegowangi.</p>
+            <div class="swiper mySwiper custom-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide card">
+                        <img src="{{ asset('assets/basahan.jpg') }}" alt="Basahan Satria Couple" class="card-image">
+                        <h3>Basahan Satria Couple</h3>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide card">
+                        <img src="{{ asset('assets/kebayak.jpg') }}" alt="Kebaya Tari" class="card-image">
+                        <h3>Kebaya Tari</h3>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide card">
+                        <img src="{{ asset('assets/Satria.jpg') }}" alt="Satria Putra" class="card-image">
+                        <h3>Satria Putra</h3>
+                    </div>
                 </div>
-        </div>
-    </section>
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container px-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <ul class="list-unstyled text-center text-white mt-3">
-                        <li>Contact Us:</li>
-                        <li>Email: info@example.com</li>
-                        <li>Phone: (123) 456-7890</li>
-                        <li>Address: 123 Main Street, City, Country</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <ul class="list-unstyled text-center text-white mt-3">
-                        <li><strong>Social Media:</strong></li>
-                        <li><a href="#" class="text-white">Facebook</a></li>
-                        <li><a href="#" class="text-white">Instagram</a></li>
-                        <li><a href="#" class="text-white">Twitter/X</a></li>
-                        <li><a href="#" class="text-white"></a></li>
-                    </ul>
-                </div>
+                <!-- Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn btn-primary" onclick="window.location.href='/booking'">BOOK NOW</button>
             </div>
         </div>
-        <p class="m-0 text-center text-white">Copyright &copy; 2024</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="service" class="perform">
+        <div class="container">
+            <div class="swiper mySwiper custom-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide card">
+                        <img src="{{ asset('assets/wayang.jpg') }}" alt="Pentas Wayang Kulit" class="card-image">
+                        <h3>Pentas Wayang Kulit</h3>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide card">
+                        <img src="{{ asset('assets/karawitan.jpg') }}" alt="Pentas Karawitan" class="card-image">
+                        <h3>Pentas Karawitan</h3>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide card">
+                        <img src="{{ asset('assets/wedding.jpg') }}" alt="Wedding Tari" class="card-image">
+                        <h3>Wedding Tari</h3>
+                    </div>
+                </div>
+                <!-- Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn btn-primary" onclick="window.location.href='/booking'">BOOK NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-us">
+        <div class="container">
+            <div class="text-left">
+                <h2>About Us</h2>
+                <p>
+                    Sanggar Rangga Adiwiyasa adalah sanggar seni budaya yang berdiri sejak 2020 di Kelurahan Ngronggo, Kota Kediri,
+                    di bawah naungan Karang Taruna Remaja Jaya. Kami memiliki dua divisi utama, yaitu Tari dan Karawitan, masing-masing dengan tiga kelas untuk berbagai tingkat kemampuan. Sanggar ini aktif berkontribusi dalam pelestarian budaya melalui berbagai pagelaran seni, baik di dalam maupun di luar Kota Kediri, seperti Geni Budjari dan Pagelaran Candi Tegowangi.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="footer-section contact">
+            <h3>Contact</h3>
+            <p><i class="fa fa-phone"></i> +62 81111112345</p>
+            <p><i class="fa fa-envelope"></i> ranggaadiwiyasa01@gmail.com</p>
+            </div>
+            <div class="footer-section social-media">
+            <h3>Social Media</h3>
+            <p><i class="fa fa-facebook"></i> Sanggar Ronggo Adi Wiyasa</p>
+            <p><i class="fa fa-instagram"></i> @sanggarronggoadiwiyasa</p>
+            <p><i class="fa fa-twitter"></i> @Sanggar_Ronggoadiwiyasa</p>
+            </div>
+            <div class="footer-section address">
+            <h3>Address</h3>
+            <p>Kelurahan Nggronggo</p>
+            <p>Kecamatan Kota</p>
+            <p>Kota Kediri</p>
+            <a href="https://maps.app.goo.gl/ElHgfvf2qTz1mcubA" target="_blank">
+                <i class="fa fa-map-marker"></i> Open in Google Maps
+            </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 copyright: ranggaadiwiyasa.com</p>
+        </div>
     </footer>
+
 </body>
+
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    var swiper = new Swiper(".mySwiper", {
-        pagination: {
-            el: ".swiper-pagination",
-            type: "progressbar",
+    const swiper = new Swiper('.mySwiper', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
         },
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
         },
     });
 </script>

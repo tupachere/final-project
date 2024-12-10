@@ -10,11 +10,17 @@
                     @csrf
                     <div class="form-group">
                         <label for="id">ID:</label>
-                        <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{ old('id') }}" required>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">RAW-</span>
+                            </div>
+                            <input type="text" class="form-control form-control-sm @error('id') is-invalid @enderror" id="id" name="id" value="{{ old('id') }}" required>
+                        </div>
                         @error('id')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+
                     <div class="form-group">
                         <label for="nama">Nama:</label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') }}">
@@ -34,12 +40,21 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="ttl">Tempat, tanggal lahir:</label>
-                        <input type="text" class="form-control @error('ttl') is-invalid @enderror" id="ttl" name="ttl" value="{{ old('ttl') }}">
-                        @error('ttl')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                    <label for="ttl">Tempat, Tanggal Lahir:</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" class="form-control @error('tempat') is-invalid @enderror" id="tempat" name="tempat" placeholder="Tempat" value="{{ old('tempat') }}" required>
+                            @error('tempat')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+
+                            <input type="date" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal" value="{{ old('tanggal') }}" required>
+                            @error('tanggal')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
+
+
                     <div class="form-group">
                         <label for="alamat">Alamat:</label>
                         <textarea
@@ -67,8 +82,12 @@
                         <input type="file" class="form-control" id="foto" name="foto">
 
                     </div>
-                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                    </div>
+
                 </form>
             </div>
         </div>
+        
 </x-layout>

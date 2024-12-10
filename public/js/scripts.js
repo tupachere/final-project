@@ -31,4 +31,8 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    document.querySelector('form').addEventListener('submit', function(event) {
+        var idInput = document.getElementById('id');
+        idInput.value = 'RAW-' + idInput.value; // Prepend 'RAW-' to the user input value
+    });
 });

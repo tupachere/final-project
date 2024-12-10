@@ -6,38 +6,68 @@ use App\Http\Controllers\AnggotaController;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+
+
 
 // Rute halaman utama
-Route::get('/', function () {
-    $total = Anggota::count();
-    return view('welcome', compact('total'));
-});
+// Route::get('/', function () {
+//     $total = Anggota::count();
+//     return view('welcome', compact('total'));
+// });
 
-// Rute halaman index
-Route::get('/index', function () {
-    return view('index');
-});
 
 // Rute halaman home
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
 
-// Rute login dengan tampilan di folder views/auth
+// Login route (GET) - Show login form
 Route::get('/login', function () {
+    if (Auth::check()) {
+        return redirect('/dashboard'); // Redirect if user is already authenticated
+    }
     return view('auth.login');
-})->middleware('guest')->name('login');
+})->name('login');
 
-// Rute logout
+Route::post('/login', function (Request $request) {
+    // Validate the email and password fields
+    $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required', 'string'],
+    ]);
+
+    // Find the user by email
+    $user = \App\Models\User::where('email', $request->email)->first();
+
+    // Check if the user exists and if the password matches (without bcrypt check)
+    if ($user && $user->password == $request->password) {
+        // Log the user in
+        Auth::login($user);
+        // Redirect to the intended page on success
+        return redirect()->intended('/dashboard');
+    }
+
+    // If authentication fails, throw a validation exception with a custom error message
+    throw ValidationException::withMessages([
+        'email' => ['The provided credentials do not match our records.'],
+    ]);
+})->name('login');
+
+
+// Logout route (POST)
 Route::post('/logout', function (Request $request) {
+    // Log out the user and regenerate the session
+    Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    Auth::logout();
-    return redirect('/home');
-})->middleware('auth')->name('logout');
+
+    // Redirect to the home page
+    return redirect('/');
+})->name('logout');
 
 // Menampilkan total anggota
-Route::get('/total', function () {
+Route::get('/dashboard', function () {
     $total = Anggota::count();
     return view('total', compact('total'));
 });

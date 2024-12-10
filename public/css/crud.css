@@ -11239,7 +11239,7 @@ body {
 }
 
   .form-group {
-    margin-bottom: 10px; /* Kurangi jarak antar elemen */
+    margin-bottom: 5px; /* Kurangi jarak antar elemen */
     padding: 5px; /* Kurangi ruang dalam elemen */
   }
 
@@ -11263,6 +11263,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan efek bayangan */
     border-radius: 10px; /* Tambahkan sudut melengkung */
     box-sizing: border-box; /* Termasuk padding dalam width */
+    overflow: hidden;
   }
 
 
@@ -11272,3 +11273,61 @@ body {
     background-color: white;
 }
 
+/* Add to your crud.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#layoutSidenav {
+  display: flex;
+  height: 100vh;
+}
+
+#layoutSidenav_nav {
+  width: 225px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, width 0.3s ease;
+}
+
+#layoutSidenav_content {
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: margin-left 0.3s ease;
+}
+
+/* Sidebar Toggle Styles */
+@media (min-width: 992px) {
+  .sb-sidenav-toggled #layoutSidenav_nav {
+      width: 0;
+      transform: translateX(-225px);
+  }
+
+  .sb-sidenav-toggled #layoutSidenav_content {
+      margin-left: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  #layoutSidenav_nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      z-index: 1050;
+      background-color: #212529; /* Match your sidebar background */
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+  }
+
+  #layoutSidenav_content {
+      width: 100%;
+  }
+
+  .sb-sidenav-toggled #layoutSidenav_nav {
+      transform: translateX(0);
+  }
+}

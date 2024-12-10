@@ -82,7 +82,7 @@ class AnggotaController extends Controller
             'foto' => $fileName,
         ]);
     
-        return redirect()->route('/anggota')->with('success', 'Data anggota berhasil ditambahkan!');
+        return back()->with('success', 'Data anggota berhasil ditambahkan!');
     }
     
     /**
@@ -163,7 +163,7 @@ class AnggotaController extends Controller
             'foto'=>$fileName,
         ]);
 
-        return redirect()->route('index.index');
+        return back()->with('success', 'Data anggota berhasil diperbarui!');
     }
 
     /**
@@ -173,7 +173,7 @@ class AnggotaController extends Controller
     {
         $id->delete();
 
-        return redirect()->route('index.index')
+        return redirect()->route('anggota.index')
                 ->with('success','Data berhasil di hapus' );
     }
 }

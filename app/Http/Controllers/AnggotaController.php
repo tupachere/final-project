@@ -30,53 +30,61 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        // melakukan validasi data
+        // Validate the input data
         $request->validate([
-            'id',
-            'nama',
-            'gender',
-            'ttl',
-            'alamat',
+            'id' => 'required',
+            'nama' => 'required|max:255',
+            'gender' => 'required',
+            'tempat' => 'required',
+            'tanggal' => 'required|date',
+            'alamat' => 'required',
             'divisi' => 'required|in:tari,karawitan,pentas seni,reog',
             'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ],
-        [
-            'id.required' => 'id wajib diisi',
+        ], [
+            'id.required' => 'ID wajib diisi',
             'nama.required' => 'Nama wajib diisi',
             'nama.max' => 'Nama maksimal 255 karakter',
-            'gender.required' => 'gender wajib diisi',
-            'ttl.required' => 'tempat, tanggal lahir wajib diisi',
-            'alamat.required' => 'alamat wajib diisi',
-            'divisi.required' => 'divisi wajib diisi',
+            'gender.required' => 'Gender wajib diisi',
+            'tempat.required' => 'Tempat lahir wajib diisi',
+            'tanggal.required' => 'Tanggal lahir wajib diisi',
+            'tanggal.date' => 'Tanggal lahir harus berupa format tanggal yang valid',
+            'alamat.required' => 'Alamat wajib diisi',
+            'divisi.required' => 'Divisi wajib diisi',
             'foto.max' => 'Foto maksimal 2 MB',
-            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
-            'foto.image' => 'File harus berbentuk image'
+            'foto.mimes' => 'File ekstensi hanya bisa jpg, png, jpeg, gif, svg',
+            'foto.image' => 'File harus berbentuk gambar',
         ]);
-
-        //jika file foto ada yang terupload
-        if(!empty($request->foto)){
-            //maka proses berikut yang dijalankan
-            $fileName = 'foto-'.uniqid().'.'.$request->foto->extension();
-            //setelah tau fotonya sudah masuk maka tempatkan ke public
+    
+        // Concatenate 'RAW-' with the provided ID value
+        $id = 'RAW-' . $request->id;
+    
+        // Concatenate tempat and tanggal to form ttl
+        $ttl = $request->tempat . ', ' . $request->tanggal;
+    
+        // Handle file upload
+        if ($request->hasFile('foto')) {
+            // Generate unique file name and move file
+            $fileName = 'foto-' . uniqid() . '.' . $request->foto->extension();
             $request->foto->move(public_path('images'), $fileName);
         } else {
+            // Default image if no file is uploaded
             $fileName = 'nophoto.jpg';
         }
-
-        //tambah data Anggota
+    
+        // Insert data into the anggota table with the 'RAW-' prefixed ID
         DB::table('anggota')->insert([
-            'id'=>$request->id,
-            'nama'=>$request->nama,
-            'gender'=>$request->gender,
-            'ttl'=>$request->ttl,
-            'alamat'=>$request->alamat,
+            'id' => $id,  // Store the ID with the 'RAW-' prefix
+            'nama' => $request->nama,
+            'gender' => $request->gender,
+            'ttl' => $ttl,  // Concatenated ttl (tempat and tanggal)
+            'alamat' => $request->alamat,
             'divisi' => $request->divisi,
-            'foto'=>$fileName,
+            'foto' => $fileName,
         ]);
-
-        return redirect()->route('index.index');
+    
+        return back()->with('success', 'Data anggota berhasil ditambahkan!');
     }
-
+    
     /**
      * Display the specified resource.
      */
@@ -155,7 +163,7 @@ class AnggotaController extends Controller
             'foto'=>$fileName,
         ]);
 
-        return redirect()->route('index.index');
+        return back()->with('success', 'Data anggota berhasil diperbarui!');
     }
 
     /**
@@ -165,7 +173,7 @@ class AnggotaController extends Controller
     {
         $id->delete();
 
-        return redirect()->route('index.index')
+        return redirect()->route('anggota.index')
                 ->with('success','Data berhasil di hapus' );
     }
 }

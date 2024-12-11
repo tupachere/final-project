@@ -1,15 +1,95 @@
-/*!
-* Start Bootstrap - Scrolling Nav v5.0.6 (https://startbootstrap.com/template/scrolling-nav)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
-
 window.addEventListener('DOMContentLoaded', event => {
+    const sidebarToggle = document.body.querySelector('#sidebarToggle');
+    const layoutSidenav = document.body.querySelector('#layoutSidenav');
+    const layoutSidenavNav = document.body.querySelector('#layoutSidenav_nav');
+    const layoutSidenavContent = document.body.querySelector('#layoutSidenav_content');
 
-    // Activate Bootstrap scrollspy on the main nav element
+    // Function to check if it's a mobile device
+    function isMobileDevice() {
+        return window.innerWidth < 992 || 
+               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Initial sidebar state function
+    function initializeSidebarState() {
+        // Always hide sidebar on mobile or small screens
+        if (isMobileDevice()) {
+            document.body.classList.add('sb-sidenav-toggled');
+        } else {
+            // Optional: You can still hide by default on desktop
+            document.body.classList.add('sb-sidenav-toggled');
+        }
+    }
+
+    if (sidebarToggle && layoutSidenav) {
+        // Sidebar toggle functionality
+        sidebarToggle.addEventListener('click', event => {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Toggle sidebar
+            document.body.classList.toggle('sb-sidenav-toggled');
+            
+            // Save state to localStorage
+            localStorage.setItem('sidebar-toggle', 
+                document.body.classList.contains('sb-sidenav-toggled')
+            );
+        });
+
+        // Responsive sidebar handling
+        function handleResponsiveSidebar() {
+            if (isMobileDevice()) {
+                // Always hide on mobile
+                document.body.classList.add('sb-sidenav-toggled');
+            } else {
+                // Check saved state or default behavior
+                const savedState = localStorage.getItem('sidebar-toggle');
+                document.body.classList.toggle(
+                    'sb-sidenav-toggled', 
+                    savedState === 'true'
+                );
+            }
+        }
+
+        // Initialize sidebar state
+        initializeSidebarState();
+
+        // Handle responsive changes
+        window.addEventListener('resize', handleResponsiveSidebar);
+
+        // Click outside handling
+        document.addEventListener('click', (event) => {
+            if (isMobileDevice() && 
+                !layoutSidenavNav.contains(event.target) && 
+                !sidebarToggle.contains(event.target)) {
+                document.body.classList.add('sb-sidenav-toggled');
+            }
+        });
+
+        // Prevent sidebar links from closing on mobile
+        const sidebarLinks = layoutSidenavNav.querySelectorAll('.nav-link');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                if (isMobileDevice()) {
+                    event.stopPropagation();
+                }
+            });
+        });
+    }
+
+    // Optional: Form ID Prepending
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function(event) {
+            const idInput = this.querySelector('#id');
+            if (idInput) {
+                idInput.value = 'RAW-' + idInput.value.replace(/^RAW-/, '');
+            }
+        });
+    });
+});
+
+
     const mainNav = document.body.querySelector('#mainNav');
     if (mainNav) {
         new bootstrap.ScrollSpy(document.body, {
@@ -17,18 +97,3 @@ window.addEventListener('DOMContentLoaded', event => {
             rootMargin: '0px 0px -40%',
         });
     };
-
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
-    });
-
-});

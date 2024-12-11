@@ -18,6 +18,7 @@ Route::get('/index', function () {
     return view('index');
 });
 
+
 // Rute halaman home
 Route::get('/home', function () {
     return view('home');

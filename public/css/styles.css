@@ -42,6 +42,14 @@ nav {
   background-color: #222831;
 }
 
+section {
+    box-shadow: 0 5px 10px 0 gray;
+    border-radius: 5px;
+    padding: 40px;
+    margin: 30px auto;
+    max-width: calc(100% - 40px);
+  }
+
 .about {
   width: 100%;
 }
@@ -93,7 +101,7 @@ nav {
   transform: translateX(-50%);
   font-family: 'Javassoul', sans-serif;
   font-size: 50px;
-  color: #fff; /* Warna teks overlay */
+  color: #ffffff; /* Warna teks overlay */
   padding: 5px 10px; /* Spasi di sekitar teks */
   border-radius: 5px; /* Membuat sudut teks melengkung */
 }

@@ -73,6 +73,11 @@ Route::get('/dashboard', function () {
     return view('total', compact('total'));
 });
 
+Route::get('anggota/dashboard', function () {
+    $total = Anggota::count();
+    return view('total', compact('total'));
+});
+
 // Rute untuk anggota dengan kontroler AnggotaController
 Route::get('/anggota', [AnggotaController::class, 'anggota'])->name('anggota.index');
 Route::get('/anggota/create', [AnggotaController::class, 'create'])->name('anggota.create');

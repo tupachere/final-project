@@ -58,6 +58,13 @@ class AnggotaController extends Controller
         // Concatenate 'RAW-' with the provided ID value
         $id = 'RAW-' . $request->id;
     
+        // Check if the ID already exists
+        $existingId = DB::table('anggota')->where('id', $id)->exists();
+    
+        if ($existingId) {
+            return back()->withErrors(['id' => 'ID sudah ada.'])->withInput();
+        }
+    
         // Concatenate tempat and tanggal to form ttl
         $ttl = $request->tempat . ', ' . $request->tanggal;
     
@@ -84,6 +91,7 @@ class AnggotaController extends Controller
     
         return back()->with('success', 'Data anggota berhasil ditambahkan!');
     }
+    
     
     /**
      * Display the specified resource.
@@ -163,7 +171,9 @@ class AnggotaController extends Controller
             'foto'=>$fileName,
         ]);
 
-        return back()->with('success', 'Data anggota berhasil diperbarui!');
+        return redirect()->route('anggota.index')
+        ->with(['status' => 'updated', 'message' => 'Data berhasil Diperbarui']);
+
     }
 
     /**
@@ -174,6 +184,7 @@ class AnggotaController extends Controller
         $id->delete();
 
         return redirect()->route('anggota.index')
-                ->with('success','Data berhasil di hapus' );
+        ->with(['status' => 'deleted', 'message' => 'Data berhasil Dihapus']);
+
     }
 }

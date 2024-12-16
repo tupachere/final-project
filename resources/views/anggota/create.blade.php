@@ -20,12 +20,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">RAW-</span>
                         </div>
-                        <input type="text" class="form-control form-control-sm @error('id') is-invalid @enderror" id="id" name="id" value="{{ old('id') }}" required>
+                        <input type="text" class="form-control form-control-sm @error('id') is-invalid @enderror" 
+                            id="id" name="id" value="{{ old('id') }}" required>
+                        @error('id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    @error('id')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
                 </div>
+
 
                 <div class="form-group">
                     <label for="nama">Nama:</label>

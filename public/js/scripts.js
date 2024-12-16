@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', event => {
         form.addEventListener('submit', function(event) {
             const idInput = this.querySelector('#id');
             if (idInput) {
-                idInput.value = 'RAW-' + idInput.value.replace(/^RAW-/, '');
+                idInput.value = idInput.value.replace(/^RAW-/, '');
             }
         });
     });

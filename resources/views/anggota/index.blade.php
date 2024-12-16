@@ -12,11 +12,16 @@
             </div>
         </div>
         <div class="card-body">
-        @if(session('success'))
-                <div class="alert alert-danger">
-                    {{ session('success') }}
-                </div>
-            @endif
+        @if(session('status') == 'updated')
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @elseif(session('status') == 'deleted')
+            <div class="alert alert-danger">
+                {{ session('message') }}
+            </div>
+        @endif
+
             <table id="datatablesSimple">
                 <thead>
                     <tr>
@@ -68,11 +73,10 @@
                                     <i class="fa-solid fa-pen-to-square fa-xl"></i>
                                 </a>
 
-                                <button type="button" class="fa-solid fa-trash fa-xl" style="color: #ec0909;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$k->id}}">
-                                    <i class="fa-solid fa-trash"></i>
+                                <button type="button" style="color: #ec0909; background: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#exampleModal{{$k->id}}">
+                                    <i class="fa-solid fa-trash fa-xl"></i>
                                 </button>
 
-                                <!-- Modal -->
                                 <div class="modal fade" id="exampleModal{{$k->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
                                     aria-hidden="true">
                                     <div class="modal-dialog">
@@ -92,6 +96,7 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
+
 
                                         </div>
                                     </div>

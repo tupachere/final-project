@@ -2504,6 +2504,7 @@ textarea.form-control-lg {
   align-items: stretch;
   width: 100%;
 }
+
 .input-group > .form-control, .input-group > .datatable-input,
 .input-group > .form-select,
 .input-group > .datatable-selector,
@@ -11243,91 +11244,252 @@ body {
     padding: 5px; /* Kurangi ruang dalam elemen */
   }
 
-  .form-group label {
-    font-size: 14px; /* Kecilkan ukuran teks label */
-    margin-bottom: 5px; /* Kurangi jarak antara label dan input */
-    display: block; /* Pastikan label di atas input */
-  }
-
-  .form-control {
-    font-size: 14px; /* Kecilkan ukuran teks input */
-    padding: 5px 10px; /* Kurangi padding di dalam input */
-    height: auto; /* Sesuaikan tinggi input berdasarkan isi */
-  }
-
-  .card-body {
-    margin: auto; /* Pusatkan secara horizontal */
-    padding: 10px; /* Tambahkan ruang dalam untuk estetika */
-    max-width: 1100px; /* Batasi lebar maksimal */
-    width: 100%; /* Sesuaikan dengan kontainer */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan efek bayangan */
-    border-radius: 10px; /* Tambahkan sudut melengkung */
-    box-sizing: border-box; /* Termasuk padding dalam width */
-    overflow: hidden;
-  }
-
-
-  .input-group-prepend .input-group-text {
-    width: 70px; /* Adjust width of the 'RAW-' prefix */
-    text-align: center; /* Ensure 'RAW-' text is centered */
-    background-color: white;
-}
-
-/* Add to your crud.css */
+/* General Reset */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fa; /* Light background */
+  color: #333; /* Default text color */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
-#layoutSidenav {
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px; /* Increase spacing between form fields */
+  padding: 5px; /* Reduce padding within the form group */
+}
+
+.form-group label {
+  font-size: 16px; /* Increase label font size */
+  margin-bottom: 8px; /* Increase space between label and input */
+  display: block;
+  color: #555;
+}
+
+.form-control {
+  font-size: 16px; /* Increase input text size */
+  padding: 12px 16px; /* Increase padding inside input fields */
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%; /* Ensure full width of the parent container */
+  background-color: #fff; /* Make sure background is white for inputs */
+}
+
+.form-control:focus {
+  border-color: #4CAF50; /* Highlight input borders when focused */
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); /* Subtle green glow */
+}
+
+/* Textarea adjustments */
+textarea.form-control {
+  min-height: 150px; /* Ensure larger textareas */
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+.input-group-prepend .input-group-text {
+  width: 70px; /* Adjust width to fit 'RAW-' text */
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px 0 0 8px; /* Ensure rounded corners are on the left */
+  border: 1px solid #ddd;
+}
+
+/* Card Body Styling */
+.card-body {
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 1200px; /* Increased max-width for larger form */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjusting Table and Card Headers for Better Readability */
+.card-header {
+  background-color: #4CAF50; /* Green header for card */
+  color: #fff;
+  font-size: 1.5em;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+}
+
+table th, table td {
+  font-size: 16px; /* Larger font size for table text */
+  padding: 14px;
+  text-align: left;
+}
+
+/* Modal content styling */
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background-color: #ec0909;
+  color: #fff;
+  border-radius: 12px 12px 0 0;
+  padding: 20px;
+}
+
+.modal-body {
+  font-size: 1.2em;
+  padding: 20px;
+}
+
+.modal-footer {
   display: flex;
-  height: 100vh;
+  justify-content: space-between;
+  padding: 15px;
 }
 
-#layoutSidenav_nav {
-  width: 225px;
-  flex-shrink: 0;
-  transition: transform 0.3s ease, width 0.3s ease;
+/* Button Styles */
+button, a {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 12px;
+  display: inline-block; /* Ensure buttons behave like inline elements */
 }
 
-#layoutSidenav_content {
-  flex-grow: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transition: margin-left 0.3s ease;
+.sidebar-toggle-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
-/* Sidebar Toggle Styles */
-@media (min-width: 992px) {
-  .sb-sidenav-toggled #layoutSidenav_nav {
-      width: 0;
-      transform: translateX(-225px);
+.sidebar-toggle-btn:hover {
+  background-color: #45a049;
+}
+
+.alert {
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* General Reset for Dashboard */
+.dashboard-layout {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fa; /* Light background */
+  color: #333; /* Default text color */
+  box-sizing: border-box;
+  height: 100%;
+}
+
+/* Dashboard Card Styles */
+.dashboard-card {
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.dashboard-card-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.dashboard-card-body h5 {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.dashboard-card-body h1 {
+  font-size: 40px;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* Specific Styles for bg-primary card */
+.dashboard-card.bg-primary {
+  background-color: #007bff; /* Primary blue color */
+}
+
+/* Dashboard Layout */
+.dashboard-row {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.dashboard-col-xl-4, .dashboard-col-md-6 {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+  .dashboard-card-body h1 {
+    font-size: 30px; /* Adjust the size for smaller screens */
   }
 
-  .sb-sidenav-toggled #layoutSidenav_content {
-      margin-left: 0;
+  .dashboard-card-body h5 {
+    font-size: 18px; /* Adjust the size for smaller screens */
   }
 }
 
-@media (max-width: 991px) {
-  #layoutSidenav_nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      z-index: 1050;
-      background-color: #212529; /* Match your sidebar background */
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-  }
+/* Breadcrumb */
+.dashboard-breadcrumb {
+  background-color: #f4f7fa;
+  padding: 10px 0;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
 
-  #layoutSidenav_content {
-      width: 100%;
-  }
+.dashboard-breadcrumb a {
+  color: #007bff; /* Primary link color */
+  text-decoration: none;
+}
 
-  .sb-sidenav-toggled #layoutSidenav_nav {
-      transform: translateX(0);
-  }
+.dashboard-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Layout Container */
+.dashboard-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+
+#basic-addon1 {
+  height: 49.5px;
 }

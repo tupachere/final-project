@@ -6,8 +6,8 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Function to check if it's a mobile device
     function isMobileDevice() {
-        return window.innerWidth < 992 || 
-               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        return window.innerWidth < 992 ||
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 
     // Initial sidebar state function
@@ -26,12 +26,12 @@ window.addEventListener('DOMContentLoaded', event => {
         sidebarToggle.addEventListener('click', event => {
             event.preventDefault();
             event.stopPropagation();
-            
+
             // Toggle sidebar
             document.body.classList.toggle('sb-sidenav-toggled');
-            
+
             // Save state to localStorage
-            localStorage.setItem('sidebar-toggle', 
+            localStorage.setItem('sidebar-toggle',
                 document.body.classList.contains('sb-sidenav-toggled')
             );
         });
@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', event => {
                 // Check saved state or default behavior
                 const savedState = localStorage.getItem('sidebar-toggle');
                 document.body.classList.toggle(
-                    'sb-sidenav-toggled', 
+                    'sb-sidenav-toggled',
                     savedState === 'true'
                 );
             }
@@ -59,8 +59,8 @@ window.addEventListener('DOMContentLoaded', event => {
 
         // Click outside handling
         document.addEventListener('click', (event) => {
-            if (isMobileDevice() && 
-                !layoutSidenavNav.contains(event.target) && 
+            if (isMobileDevice() &&
+                !layoutSidenavNav.contains(event.target) &&
                 !sidebarToggle.contains(event.target)) {
                 document.body.classList.add('sb-sidenav-toggled');
             }
@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', event => {
         form.addEventListener('submit', function(event) {
             const idInput = this.querySelector('#id');
             if (idInput) {
-                idInput.value = 'RAW-' + idInput.value.replace(/^RAW-/, '');
+                idInput.value = idInput.value.replace(/^RAW-/, '');
             }
         });
     });

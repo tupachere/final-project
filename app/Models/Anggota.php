@@ -18,6 +18,11 @@ class Anggota extends Model
         'foto'
     ];
 
+    public function kas()
+    {
+        return $this->hasMany(Kas::class, 'id_anggota', 'id');
+    }
+
 
     protected $primaryKey = 'id';
     public $incrementing = false; // Non-auto increment

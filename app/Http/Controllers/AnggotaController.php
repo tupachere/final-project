@@ -54,20 +54,20 @@ class AnggotaController extends Controller
             'foto.mimes' => 'File ekstensi hanya bisa jpg, png, jpeg, gif, svg',
             'foto.image' => 'File harus berbentuk gambar',
         ]);
-    
+
         // Concatenate 'RAW-' with the provided ID value
         $id = 'RAW-' . $request->id;
-    
+
         // Check if the ID already exists
         $existingId = DB::table('anggota')->where('id', $id)->exists();
-    
+
         if ($existingId) {
             return back()->withErrors(['id' => 'ID sudah ada.'])->withInput();
         }
-    
+
         // Concatenate tempat and tanggal to form ttl
         $ttl = $request->tempat . ', ' . $request->tanggal;
-    
+
         // Handle file upload
         if ($request->hasFile('foto')) {
             // Generate unique file name and move file
@@ -77,7 +77,7 @@ class AnggotaController extends Controller
             // Default image if no file is uploaded
             $fileName = 'nophoto.jpg';
         }
-    
+
         // Insert data into the anggota table with the 'RAW-' prefixed ID
         DB::table('anggota')->insert([
             'id' => $id,  // Store the ID with the 'RAW-' prefix
@@ -88,18 +88,12 @@ class AnggotaController extends Controller
             'divisi' => $request->divisi,
             'foto' => $fileName,
         ]);
-    
+
         return back()->with('success', 'Data anggota berhasil ditambahkan!');
     }
-    
-    
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -111,7 +105,7 @@ class AnggotaController extends Controller
 
     }
 
-    
+
 
     /**
      * Update the specified resource in storage.

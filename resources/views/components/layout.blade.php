@@ -49,7 +49,28 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="/anggota">List Anggota</a>
                                 <a class="nav-link" href="/anggota/create">Tambah Anggota</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Kas
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/kas">List Kas</a>
                                 <a class="nav-link" href="/kas/create">Tambah Kas</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAbsensi" aria-expanded="false" aria-controls="collapseAbsensi">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Absensi
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseAbsensi" aria-labelledby="headingAbsensi" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/absensi">Tambah Absensi</a>
+                                <a class="nav-link" href="/laporan-absensi">Laporan Absensi</a>
                             </nav>
                         </div>
                     </div>

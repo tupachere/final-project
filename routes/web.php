@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\KasController;
+use App\Http\Controllers\AbsensiController;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -90,3 +92,24 @@ Route::delete('/anggota/delete/{id}', [AnggotaController::class, 'destroy'])->na
 Route::middleware(['auth'])->group(function () {
     Route::resource('anggota', AnggotaController::class)->except(['create', 'edit', 'destroy']);
 });
+
+
+
+Route::get('/kas', [KasController::class, 'index'])->name('kas.index');
+Route::get('/kas/create', [KasController::class, 'create'])->name('kas.create');
+Route::post('/kas', [KasController::class, 'store'])->name('kas.store');
+Route::get('/kas/{id}', [KasController::class, 'show'])->name('kas.show');
+Route::get('/kas/edit/{id}', [KasController::class, 'edit'])->name('kas.edit');
+Route::put('/kas/edit/{id}', [KasController::class, 'update'])->name('kas.update');
+Route::delete('/kas/{id}', [KasController::class, 'destroy'])->name('kas.destroy');
+
+Route::get('/laporan/absensi/pdf', [AbsensiController::class, 'generatePDF'])->name('absensi.laporan.pdf');
+Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi.absensi');
+Route::get('/laporan-absensi', [AbsensiController::class, 'laporan'])->name('absensi.laporan');
+
+Route::post('/absensi', [AbsensiController::class, 'store'])->name('absensi.store');
+// Rute grup untuk anggota dengan middleware auth
+Route::middleware(['auth'])->group(function () {
+    Route::resource('anggota', AnggotaController::class)->except(['create', 'edit', 'destroy']);
+});
+

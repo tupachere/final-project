@@ -24,7 +24,7 @@
                 <!-- Tanggal Kas -->
                 <div class="form-group mt-3">
                     <label for="tgl_kas">Tanggal Kas:</label>
-                    <input type="date" class="form-control @error('tgl_kas') is-invalid @enderror" id="tgl_kas" name="tgl_kas" value="{{ old('tgl_kas') }}" required>
+                    <input type="date" class="form-control @error('tgl_kas') is-invalid @enderror" id="tgl_kas" name="tgl_kas" value="{{ old('tgl_kas', now()->format('Y-m-d')) }}" required>
                     @error('tgl_kas')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -52,9 +52,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#id').select2({
+            $('#id_anggota').select2({
                 placeholder: "Cari Nama Anggota...",
-                allowClear: true
+                allowClear: true,
+                width: '100%' // Agar menyesuaikan dengan form
             });
         });
     </script>

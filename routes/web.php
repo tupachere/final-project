@@ -5,6 +5,8 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\KasController;
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\PemasukanController;
+use App\Http\Controllers\PengeluaranController;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -113,3 +115,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('anggota', AnggotaController::class)->except(['create', 'edit', 'destroy']);
 });
 
+
+Route::resource('pemasukan', PemasukanController::class)->except(['edit', 'update', 'destroy']);
+Route::resource('pengeluaran', PengeluaranController::class)->except(['edit', 'update', 'destroy']);

@@ -90,6 +90,11 @@
                     @endforeach
                 </tbody>
             </table>
+
+            {{-- Total Kas --}}
+            <div class="mt-4">
+                <h5>Total Kas: Rp {{ number_format($data->sum('jumlah'), 0, ',', '.') }}</h5>
+            </div>
         </div>
     </div>
 </x-layout>

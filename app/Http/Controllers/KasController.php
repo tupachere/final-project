@@ -69,15 +69,6 @@ class KasController extends Controller
 
 
     /**
-     * Display the specified resource.
-     */
-    // public function show($id)
-    // {
-    //     $kas = Kas::find($id);
-    //     return view('kas.show', compact('kas'));
-    // }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)

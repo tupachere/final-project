@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,16 +8,20 @@
     <meta name="author" content="" />
     <title>{{ $title ?? 'Default Title' }}</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="/css/crud.css" rel="stylesheet" />
+    <link href="{{ url('/css/crud.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" href="dashboard">RONGGO ADI WIYASA</a>
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <a class="navbar-brand ps-3" href="{{ url('/dashboard') }}">RONGGO ADI WIYASA</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="login" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="{{ url('/login') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user fa-fw"></i>
+                </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
@@ -34,7 +39,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Lihat Data</div>
-                        <a class="nav-link" href="dashboard">
+                        <a class="nav-link" href="{{ url('/dashboard') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -46,8 +51,8 @@
                         </a>
                         <div class="collapse" id="collapseAnggota" aria-labelledby="headingAnggota" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/anggota">List Anggota</a>
-                                <a class="nav-link" href="/anggota/create">Tambah Anggota</a>
+                                <a class="nav-link" href="{{ url('/anggota') }}">List Anggota</a>
+                                <a class="nav-link" href="{{ url('/anggota/create') }}">Tambah Anggota</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseKas" aria-expanded="false" aria-controls="collapseKas">
@@ -57,16 +62,16 @@
                         </a>
                         <div class="collapse" id="collapseKas" aria-labelledby="headingKas" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/kas">List Kas</a>
-                                <a class="nav-link" href="/kas/create">Tambah Kas</a>
+                                <a class="nav-link" href="{{ url('/kas') }}">List Kas</a>
+                                <a class="nav-link" href="{{ url('/kas/create') }}">Tambah Kas</a>
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePemasukan" aria-expanded="false" aria-controls="collapsePemasukan">
                                     Pemasukan
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="collapsePemasukan" data-bs-parent="#collapseKas">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="/pemasukan">List Pemasukan</a>
-                                        <a class="nav-link" href="/pemasukan/create">Tambah Pemasukan</a>
+                                        <a class="nav-link" href="{{ url('/pemasukan') }}">List Pemasukan</a>
+                                        <a class="nav-link" href="{{ url('/pemasukan/create') }}">Tambah Pemasukan</a>
                                     </nav>
                                 </div>
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePengeluaran" aria-expanded="false" aria-controls="collapsePengeluaran">
@@ -75,8 +80,8 @@
                                 </a>
                                 <div class="collapse" id="collapsePengeluaran" data-bs-parent="#collapseKas">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="/pengeluaran">List Pengeluaran</a>
-                                        <a class="nav-link" href="/pengeluaran/create">Tambah Pengeluaran</a>
+                                        <a class="nav-link" href="{{ url('/pengeluaran') }}">List Pengeluaran</a>
+                                        <a class="nav-link" href="{{ url('/pengeluaran/create') }}">Tambah Pengeluaran</a>
                                     </nav>
                                 </div>
                             </nav>
@@ -88,8 +93,8 @@
                         </a>
                         <div class="collapse" id="collapseAbsensi" aria-labelledby="headingAbsensi" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/absensi">Tambah Absensi</a>
-                                <a class="nav-link" href="/laporan-absensi">Laporan Absensi</a>
+                                <a class="nav-link" href="{{ url('/absensi') }}">Tambah Absensi</a>
+                                <a class="nav-link" href="{{ url('/laporan-absensi') }}">Laporan Absensi</a>
                             </nav>
                         </div>
                     </div>
@@ -114,17 +119,18 @@
                         @endisset
                     </ol>
 
+
                     {{ $slot }}
                 </div>
             </main>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="/js/scripts.js"></script>
+    <script src="{{ url('/js/scripts.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="/assets/demo/chart-area-demo.js"></script>
-    <script src="/assets/demo/chart-bar-demo.js"></script>
+    <script src="{{ url('/assets/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ url('/assets/demo/chart-bar-demo.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="/js/datatables-simple-demo.js"></script>
+    <script src="{{ url('/js/datatables-simple-demo.js') }}"></script>
 </body>
 </html>

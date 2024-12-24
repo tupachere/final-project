@@ -73,10 +73,10 @@
                     <label for="divisi">Divisi:</label>
                     <select class="form-control @error('divisi') is-invalid @enderror" id="divisi" name="divisi">
                         <option value="" disabled selected>Pilih Divisi</option>
-                        <option value="tari" {{ old('divisi') == 'tari' ? 'selected' : '' }}>Tari</option>
-                        <option value="karawitan" {{ old('divisi') == 'karawitan' ? 'selected' : '' }}>Karawitan</option>
-                        <option value="pentas seni" {{ old('divisi') == 'pentas seni' ? 'selected' : '' }}>Pentas Seni</option>
-                        <option value="reog" {{ old('divisi') == 'reog' ? 'selected' : '' }}>Reog</option>
+                        <option value="Tari Tradisional" {{ old('divisi') == 'Tari Tradisional' ? 'selected' : '' }}>Tari Tradisional</option>
+                        <option value="Karawitan" {{ old('divisi') == 'Karawitan' ? 'selected' : '' }}>Karawitan</option>
+                        <option value="Wayang Kulit" {{ old('divisi') == 'Wayang Kulit' ? 'selected' : '' }}>Wayang Kulit</option>
+                        <option value="Reog" {{ old('divisi') == 'Reog' ? 'selected' : '' }}>Reog</option>
                     </select>
                     @error('divisi')
                         <div class="invalid-feedback">{{ $message }}</div>

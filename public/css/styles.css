@@ -212,13 +212,22 @@ footer a:hover {
 
 
 /* Background styling */
-#login {
-    background-color: #E6DFDF; /* Dark background */
+body#login {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    background: linear-gradient(270deg, #2E5077, #4DA1A9, #79D7BE, #F6F4F0);
+    background-size: 600% 600%;
+    animation: gradientBackground 10s ease infinite;
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Login container */
@@ -228,7 +237,7 @@ footer a:hover {
 
 
 .login-box {
-    background-color: rgba(217, 217, 217, 0.9); /* Semi-transparent light gray */
+    background-color: #213555; /* Semi-transparent light gray */
     padding: 40px;
     border-radius: 20px; /* Membuat sudut membulat */
     width: 350px; /* Lebar kotak login */

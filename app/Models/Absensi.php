@@ -18,7 +18,7 @@ class Absensi extends Model
     public $timestamps = true; // Gunakan timestamps untuk created_at dan updated_at
     public function anggota()
     {
-        return $this->belongsTo(Anggota::class);
+        return $this->belongsTo(Anggota::class, 'anggota_id', 'id');
     }
 
 }

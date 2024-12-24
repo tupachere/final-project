@@ -31,12 +31,10 @@ class PengeluaranController extends Controller
     {
         // Validasi input
         $request->validate([
-            'id',
             'pengeluaran',
             'tgl_keluar' => 'required|date',
             'jumlah' => 'required|numeric|min:0',
         ], [
-            'id.required' => 'ID wajib diisi.',
             'pengeluaran' => 'pengeluaran harus diisi.',
             'tgl_keluar.required' => 'Tanggal pengeluaran wajib diisi.',
             'tgl_keluar.date' => 'Format tanggal tidak sesuai.',
@@ -47,7 +45,6 @@ class PengeluaranController extends Controller
 
         // Menyimpan data pengeluaran
         DB::table('pengeluaran')->insert([
-            'id' => $request->id,
             'pengeluaran' => $request->pengeluaran,
             'tgl_keluar' => $request->tgl_keluar,
             'jumlah' => $request->jumlah,
@@ -61,12 +58,24 @@ class PengeluaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($pengeluaran)
     {
-        // Cari data pengeluaran berdasarkan ID
-        $pengeluaran = Pengeluaran::findOrFail($id);
+        // Cari data pengeluaran berdasarkan pe$pengeluaran
+        $pengeluaran = Pengeluaran::findOrFail($pengeluaran);
 
         // Tampilkan view untuk detail pengeluaran
         return view('pengeluaran.show', compact('pengeluaran'));
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        DB::table('pengeluaran')->where('id', $id)->delete();
+
+        return redirect()->route('pengeluaran.index')->with(['status' => 'deleted', 'message' => 'Data berhasil Dihapus']);
+    }
+
 }

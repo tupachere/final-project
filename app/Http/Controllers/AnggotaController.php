@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class AnggotaController extends Controller
 {
@@ -38,7 +39,7 @@ class AnggotaController extends Controller
             'tempat' => 'required',
             'tanggal' => 'required|date',
             'alamat' => 'required',
-            'divisi' => 'required|in:tari,karawitan,pentas seni,reog',
+            'divisi' => 'required',
             'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ], [
             'id.required' => 'ID wajib diisi',
@@ -119,7 +120,7 @@ class AnggotaController extends Controller
             'gender',
             'ttl',
             'alamat',
-            'divisi' => 'required|in:tari,karawitan,pentas seni,reog',
+            'divisi',
             'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
         ],
@@ -181,4 +182,16 @@ class AnggotaController extends Controller
         ->with(['status' => 'deleted', 'message' => 'Data berhasil Dihapus']);
 
     }
+
+    public function exportPdf()
+    {
+        $anggota = Anggota::all();
+
+        $pdf = PDF::loadView('anggota.pdf', compact('anggota'))
+            ->setPaper('a4', 'landscape'); // Atur ukuran dan orientasi kertas
+
+        return $pdf->download('anggota-list.pdf'); // Nama file hasil download
+    }
 }
+
+

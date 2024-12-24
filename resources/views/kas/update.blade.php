@@ -17,11 +17,11 @@
                 <div class="form-group">
                     <label for="id_anggota">ID Anggota:</label>
                     <input type="text"
-                           class="form-control @error('id_anggota') is-invalid @enderror"
-                           id="id_anggota"
-                           name="id_anggota"
-                           value="{{ $kas->id_anggota }}"
-                           readonly>
+                        class="form-control @error('id_anggota') is-invalid @enderror"
+                        id="id_anggota"
+                        name="id_anggota"
+                        value="{{ $kas->id_anggota }}"
+                        readonly>
                     @error('id_anggota')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -31,11 +31,11 @@
                 <div class="form-group mt-3">
                     <label for="tgl_kas">Tanggal Kas:</label>
                     <input type="date"
-                           class="form-control @error('tgl_kas') is-invalid @enderror"
-                           id="tgl_kas"
-                           name="tgl_kas"
-                           value="{{ old('tgl_kas', $kas->tgl_kas) }}"
-                           required>
+                        class="form-control @error('tgl_kas') is-invalid @enderror"
+                        id="tgl_kas"
+                        name="tgl_kas"
+                        value="{{ old('tgl_kas', $kas->tgl_kas) }}"
+                        required>
                     @error('tgl_kas')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -45,12 +45,12 @@
                 <div class="form-group mt-3">
                     <label for="jumlah">Jumlah:</label>
                     <input type="number"
-                           class="form-control @error('jumlah') is-invalid @enderror"
-                           id="jumlah"
-                           name="jumlah"
-                           value="{{ old('jumlah', $kas->jumlah) }}"
-                           min="0"
-                           required>
+                        class="form-control @error('jumlah') is-invalid @enderror"
+                        id="jumlah"
+                        name="jumlah"
+                        value="{{ old('jumlah', $kas->jumlah) }}"
+                        min="0"
+                        required>
                     @error('jumlah')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -58,7 +58,7 @@
 
                 <!-- Tombol -->
                 <div class="mt-4 d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                    <button type="button" id="btns" class="btn btn-secondary" onclick="window.history.back()">
                         <i class="fas fa-arrow-left"></i> Kembali
                     </button>
                     <button type="submit" class="btn btn-primary">

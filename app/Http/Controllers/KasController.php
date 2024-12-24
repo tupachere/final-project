@@ -7,6 +7,7 @@ use App\Models\Anggota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 
 class KasController extends Controller
@@ -64,7 +65,7 @@ class KasController extends Controller
             'updated_at' => now(),
         ]);
 
-        return redirect()->route('kas.index')->with('success', 'Data kas berhasil ditambahkan.');
+        return back()->with('success', 'Data kas berhasil ditambahkan.');
     }
 
 
@@ -115,7 +116,7 @@ class KasController extends Controller
 
 
         // Redirect dengan pesan sukses
-        return redirect()->route('kas.index')->with('success', 'Data kas berhasil diperbarui.');
+        return redirect()->route('kas.index')->with(['status' => 'updated', 'message' => 'Data berhasil Diperbarui']);
     }
 
     /**
@@ -125,6 +126,20 @@ class KasController extends Controller
     {
         DB::table('kas')->where('id', $id)->delete();
 
-        return redirect()->route('kas.index')->with('success', 'Data kas berhasil dihapus.');
+        return redirect()->route('kas.index')->with(['status' => 'deleted', 'message' => 'Data berhasil Dihapus']);
     }
+
+
+    public function exportPdf()
+    {
+        // Ambil data kas beserta informasi anggota
+        $data = Kas::with('anggota')->get();
+
+        // Load view untuk PDF dengan membawa data kas dan anggota
+        $pdf = PDF::loadView('kas.pdf', compact('data'))
+            ->setPaper('a4', 'landscape'); // Atur ukuran dan orientasi kertas
+
+        return $pdf->download('kas-list.pdf'); // Nama file hasil download
+    }
+
 }

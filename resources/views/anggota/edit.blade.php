@@ -57,11 +57,11 @@
                 <div class="form-group">
                     <label for="divisi">Divisi:</label>
                     <select class="form-control @error('divisi') is-invalid @enderror" id="divisi" name="divisi">
-                        <option value="" disabled selected>Pilih Divisi</option>
-                        <option value="tari" {{ old('divisi', $anggota->divisi) == 'tari' ? 'selected' : '' }}>Tari</option>
-                        <option value="karawitan" {{ old('divisi', $anggota->divisi) == 'karawitan' ? 'selected' : '' }}>Karawitan</option>
-                        <option value="pentas seni" {{ old('divisi', $anggota->divisi) == 'pentas seni' ? 'selected' : '' }}>Pentas Seni</option>
-                        <option value="reog" {{ old('divisi', $anggota->divisi) == 'reog' ? 'selected' : '' }}>Reog</option>
+                        <option value="" disabled {{ old('divisi', $anggota->divisi) == '' ? 'selected' : '' }}>Pilih Divisi</option>
+                        <option value="Tari" {{ old('divisi', $anggota->divisi) == 'Tari' ? 'selected' : '' }}>Tari Tradisional</option>
+                        <option value="Karawitan" {{ old('divisi', $anggota->divisi) == 'Karawitan' ? 'selected' : '' }}>Karawitan</option>
+                        <option value="Wayang Kulit" {{ old('divisi', $anggota->divisi) == 'Wayang Kulit' ? 'selected' : '' }}>Wayang Kulit</option>
+                        <option value="Reog" {{ old('divisi', $anggota->divisi) == 'Reog' ? 'selected' : '' }}>Reog</option>
                     </select>
                     @error('divisi')
                         <div class="invalid-feedback">{{ $message }}</div>
@@ -77,10 +77,8 @@
                     @endif
 
                 </div>
-                <button type="button" class="btn btn-secondary mt-4" onclick="window.history.back()">Kembali</button>
-
+                <button type="button" id="btns" class="btn btn-secondary mt-4" onclick="window.history.back()">Kembali</button>
                 <button type="submit" class="btn btn-primary mt-4">Submit</button>
-
             </form>
         </div>
     </div>

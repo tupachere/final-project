@@ -7,20 +7,30 @@ use App\Http\Controllers\KasController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\PemasukanController;
 use App\Http\Controllers\PengeluaranController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\JadwalController;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Exports\KasExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PemasukanExport;
+use App\Exports\PengeluaranExport;
+
+Route::get('/kas/export', function () {
+    return Excel::download(new KasExport, 'data_kas.xlsx');
+})->name('kas.export');
 
 
+Route::get('/pemasukan/export', function () {
+    return Excel::download(new PemasukanExport, 'data_pemasukan.xlsx');
+})->name('pemasukan.export');
 
-// Rute halaman utama
-// Route::get('/', function () {
-//     $total = Anggota::count();
-//     return view('welcome', compact('total'));
-// });
-
-
+Route::get('/pengeluaran/export', function () {
+    return Excel::download(new PengeluaranExport, 'data_pengeluaran.xlsx');
+})->name('pengeluaran.export');
 
 // Rute halaman home
 Route::get('/', function () {
@@ -55,7 +65,7 @@ Route::post('/login', function (Request $request) {
 
     // If authentication fails, throw a validation exception with a custom error message
     throw ValidationException::withMessages([
-        'email' => ['The provided credentials do not match our records.'],
+        'email' => ['Email atau password salah.'],
     ]);
 })->name('login');
 
@@ -72,15 +82,10 @@ Route::post('/logout', function (Request $request) {
 })->name('logout');
 
 // Menampilkan total anggota
-Route::get('/dashboard', function () {
-    $total = Anggota::count();
-    return view('total', compact('total'));
-});
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::resource('pengeluaran', PengeluaranController::class);
 
-Route::get('anggota/dashboard', function () {
-    $total = Anggota::count();
-    return view('total', compact('total'));
-});
+
 
 // Rute untuk anggota dengan kontroler AnggotaController
 Route::get('/anggota', [AnggotaController::class, 'anggota'])->name('anggota.index');
@@ -89,6 +94,8 @@ Route::post('/anggota/store', [AnggotaController::class, 'store'])->name('anggot
 Route::get('/anggota/edit/{id}', [AnggotaController::class, 'edit'])->name('anggota.edit');
 Route::put('/anggota/update/{id}', [AnggotaController::class, 'update'])->name('anggota.update');
 Route::delete('/anggota/delete/{id}', [AnggotaController::class, 'destroy'])->name('anggota.destroy');
+Route::get('/anggota/export-pdf', [AnggotaController::class, 'exportPdf'])->name('anggota.exportPdf');
+
 
 // Rute grup untuk anggota dengan middleware auth
 Route::middleware(['auth'])->group(function () {
@@ -100,10 +107,11 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/kas', [KasController::class, 'index'])->name('kas.index');
 Route::get('/kas/create', [KasController::class, 'create'])->name('kas.create');
 Route::post('/kas', [KasController::class, 'store'])->name('kas.store');
-Route::get('/kas/{id}', [KasController::class, 'show'])->name('kas.show');
+//Route::get('/kas/{id}', [KasController::class, 'show'])->name('kas.show');
 Route::get('/kas/edit/{id}', [KasController::class, 'edit'])->name('kas.edit');
 Route::put('/kas/edit/{id}', [KasController::class, 'update'])->name('kas.update');
 Route::delete('/kas/{id}', [KasController::class, 'destroy'])->name('kas.destroy');
+Route::get('/kas/export-pdf', [KasController::class, 'exportPdf'])->name('data.exportPdf');
 
 Route::get('/laporan/absensi/pdf', [AbsensiController::class, 'generatePDF'])->name('absensi.laporan.pdf');
 Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi.absensi');
@@ -116,5 +124,17 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::resource('pemasukan', PemasukanController::class)->except(['edit', 'update', 'destroy']);
-Route::resource('pengeluaran', PengeluaranController::class)->except(['edit', 'update', 'destroy']);
+Route::resource('pemasukan', PemasukanController::class)->except(['edit', 'update']);
+Route::resource('pengeluaran', PengeluaranController::class)->except(['edit', 'update']);
+Route::get('/charts/area', [ChartController::class, 'showChart']);
+
+
+
+Route::prefix('jadwals')->group(function () {
+    Route::get('/', [JadwalController::class, 'index'])->name('jadwals.index'); // Tampilkan daftar jadwal
+    Route::get('/create', [JadwalController::class, 'create'])->name('jadwals.create'); // Form tambah jadwal
+    Route::post('/', [JadwalController::class, 'store'])->name('jadwals.store'); // Simpan jadwal baru
+    Route::get('/{id}/edit', [JadwalController::class, 'edit'])->name('jadwals.edit'); // Form edit jadwal
+    Route::put('/{id}', [JadwalController::class, 'update'])->name('jadwals.update'); // Perbarui jadwal
+    Route::delete('/{id}', [JadwalController::class, 'destroy'])->name('jadwals.destroy'); // Hapus jadwal
+});

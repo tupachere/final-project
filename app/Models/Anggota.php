@@ -27,4 +27,11 @@ class Anggota extends Model
     protected $primaryKey = 'id';
     public $incrementing = false; // Non-auto increment
     protected $keyType = 'string'; // Primary key tipe string
+
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class, 'anggota_id', 'id');
+    }
+
 }
+

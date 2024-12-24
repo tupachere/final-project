@@ -8,6 +8,7 @@
                 </div>
                 <div class="col-md-6 text-end">
                     <a href="{{ route('anggota.create') }}" class="btn btn-sm btn-primary">Tambah Data Anggota</a>
+                    <a href="{{ route('anggota.exportPdf') }}" id="btnp" class="btn btn-sm btn-danger">Export PDF</a>
                 </div>
             </div>
         </div>
@@ -89,15 +90,13 @@
                                         Apakah anda yakin akan menghapus {{$k->nama}}?
                                         </div>
                                         <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" id="btns" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
                                         <form action="{{ route('anggota.destroy', $k->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" id="btnp" class="btn btn-danger">Delete</button>
                                         </form>
-
-
                                         </div>
                                     </div>
                                     </div>

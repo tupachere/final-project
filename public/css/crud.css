@@ -11392,104 +11392,133 @@ button, a {
 }
 
 /* General Reset for Dashboard */
-.dashboard-layout {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f4f7fa; /* Light background */
-  color: #333; /* Default text color */
-  box-sizing: border-box;
-  height: 100%;
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Dashboard Card Styles */
+.dashboard-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
 .dashboard-card {
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-}
-
-.dashboard-card:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
 }
 
 .dashboard-card-body {
-  padding: 20px;
-  text-align: center;
+    padding: 16px;
 }
 
-.dashboard-card-body h5 {
-  font-size: 20px;
-  color: #fff;
-  margin-bottom: 10px;
-  font-weight: bold;
+.dashboard-card h5 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
 }
 
-.dashboard-card-body h1 {
-  font-size: 40px;
-  color: #fff;
-  font-weight: 600;
-  margin-top: 10px;
+.dashboard-card h1 {
+    font-size: 2rem;
+    margin: 0;
 }
 
-/* Specific Styles for bg-primary card */
-.dashboard-card.bg-primary {
-  background-color: #007bff; /* Primary blue color */
+.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Dashboard Layout */
-.dashboard-row {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-around;
+.img-fluid {
+    max-width: 100%;
+    height: auto;
 }
 
-.dashboard-col-xl-4, .dashboard-col-md-6 {
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
 
-/* Ensure responsiveness */
+  /* Ensure responsiveness */
 @media (max-width: 768px) {
-  .dashboard-card-body h1 {
-    font-size: 30px; /* Adjust the size for smaller screens */
-  }
+    .dashboard-card-body h1 {
+      font-size: 30px; /* Adjust the size for smaller screens */
+    }
 
-  .dashboard-card-body h5 {
-    font-size: 18px; /* Adjust the size for smaller screens */
-  }
+    .dashboard-card-body h5 {
+      font-size: 18px; /* Adjust the size for smaller screens */
+    }
 }
 
-/* Breadcrumb */
+  /* Breadcrumb */
 .dashboard-breadcrumb {
-  background-color: #f4f7fa;
-  padding: 10px 0;
-  font-size: 1.1em;
-  margin-bottom: 20px;
+    background-color: #f4f7fa;
+    padding: 10px 0;
+    font-size: 1.1em;
+    margin-bottom: 20px;
 }
 
 .dashboard-breadcrumb a {
-  color: #007bff; /* Primary link color */
-  text-decoration: none;
+    color: #007bff; /* Primary link color */
+    text-decoration: none;
 }
 
 .dashboard-breadcrumb a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
-/* Layout Container */
+  /* Layout Container */
 .dashboard-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 
-#basic-addon1 {
-  height: 49.5px;
-}
+  #basic-addon1 {
+    height: 49.5px;
+  }
+
+  .btn {
+      background-color: #0a53be;
+  }
+
+  #btne {
+      background-color: #155724;
+
+  }
+
+  #btnp {
+      background-color: #b02a37;
+  }
+
+  #btns {
+      background-color: #51585e ;
+  }
+
+
+  .dashboard-card {
+      text-decoration: none; /* Menghilangkan garis bawah */
+
+  }
+
+  .scrolling-wrapper {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .scrolling-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-left 13s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+  }
+

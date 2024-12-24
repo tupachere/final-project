@@ -8,6 +8,8 @@
                 </div>
                 <div class="col-md-6 text-end">
                     <a href="{{ route('kas.create') }}" class="btn btn-sm btn-primary">Tambah Data Kas</a>
+                    <a href="{{ route('kas.export') }}" id="btne" class="btn btn-sm btn-success">Export Excel</a>
+                    <a href="{{ route('data.exportPdf') }}" id="btnp" class="btn btn-sm btn-danger">Export PDF</a>
                 </div>
             </div>
         </div>
@@ -75,11 +77,11 @@
                                                 Apakah Anda yakin ingin menghapus data kas untuk <strong>{{ $k->anggota->nama }}</strong> dengan ID <strong>{{ $k->id_anggota }}</strong>?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                <button type="button" id="btns" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                                 <form action="{{ route('kas.destroy', $k->id) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    <button type="submit" id="btnp" class="btn btn-danger">Hapus</button>
                                                 </form>
                                             </div>
                                         </div>

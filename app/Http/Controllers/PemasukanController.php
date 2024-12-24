@@ -33,13 +33,10 @@ class PemasukanController extends Controller
     {
         // Validasi input
         $request->validate([
-            'id' => 'required|unique:pemasukan,id',
             'pemasukan' => 'required|string',
             'tgl_masuk' => 'required|date',
             'jumlah' => 'required|numeric|min:0',
         ], [
-            'id.required' => 'ID wajib diisi.',
-            'id.unique' => 'ID sudah ada.',
             'pemasukan.required' => 'Pemasukan harus diisi.',
             'tgl_masuk.required' => 'Tanggal pemasukan wajib diisi.',
             'tgl_masuk.date' => 'Format tanggal tidak sesuai.',
@@ -50,7 +47,6 @@ class PemasukanController extends Controller
 
         // Simpan data pemasukan ke database
         DB::table('pemasukan')->insert([
-            'id' => $request->id,
             'pemasukan' => $request->pemasukan,
             'tgl_masuk' => $request->tgl_masuk,
             'jumlah' => $request->jumlah,
@@ -64,12 +60,24 @@ class PemasukanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($pemasukan)
     {
         // Cari data pemasukan berdasarkan ID
-        $pemasukan = Pemasukan::findOrFail($id);
+        $pemasukan = Pemasukan::findOrFail($pemasukan);
 
         // Tampilkan view untuk detail pemasukan
         return view('pemasukan.show', compact('pemasukan'));
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        DB::table('pemasukan')->where('id', $id)->delete();
+
+        return redirect()->route('pemasukan.index')->with(['status' => 'deleted', 'message' => 'Data berhasil Dihapus']);
+    }
+
 }

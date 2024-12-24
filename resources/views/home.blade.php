@@ -47,7 +47,9 @@
                 <div class="swiper-pagination"></div>
             </div>
             <div class="text-center mt-3">
-                <button class="btn btn-primary" onclick="window.location.href='/booking'">BOOK NOW</button>
+                <a href="https://wa.me/6281252788916?text=Halo%20Sanggar%20Rangga%20Adiwiyasa,%20saya%20ingin%20melakukan%20penyewaan." class="btn btn-primary">
+                    BOOK NOW
+                </a>
             </div>
         </div>
     </section>
@@ -79,7 +81,9 @@
                 <div class="swiper-pagination"></div>
             </div>
             <div class="text-center mt-3">
-                <button class="btn btn-primary" onclick="window.location.href='/booking'">BOOK NOW</button>
+                <a href="https://wa.me/6281252788916?text=Halo%20Sanggar%20Rangga%20Adiwiyasa,%20saya%20ingin%20melakukan%20penyewaan." class="btn btn-primary">
+                    BOOK NOW
+                </a>
             </div>
         </div>
     </section>
@@ -101,15 +105,35 @@
     <footer class="footer">
         <div class="container-footer">
             <div class="footer-section contact">
-            <h3>Contact</h3>
-            <p><i class="fa fa-phone"></i> +62 81111112345</p>
-            <p><i class="fa fa-envelope"></i> ranggaadiwiyasa01@gmail.com</p>
-            </div>
-            <div class="footer-section social-media">
-            <h3>Social Media</h3>
-            <p><i class="fa fa-facebook"></i> Sanggar Ronggo Adi Wiyasa</p>
-            <p><i class="fa fa-instagram"></i> @sanggarronggoadiwiyasa</p>
-            <p><i class="fa fa-twitter"></i> @Sanggar_Ronggoadiwiyasa</p>
+                <h3>Contact</h3>
+                <p>
+                    <a href="https://wa.me/6281252788916" target="_blank">
+                        <i class="fa fa-phone"></i> +62 81111112345
+                    </a>
+                </p>
+                <p>
+                    <a href="mailto:ranggaadiwiyasa01@gmail.com" target="_blank">
+                        <i class="fa fa-envelope"></i> ranggaadiwiyasa01@gmail.com
+                    </a>
+                </p>
+                </div>
+                <div class="footer-section social-media">
+                <h3>Social Media</h3>
+                <p>
+                    <a href="https://www.facebook.com/sanggarronggoadiwiyasa" target="_blank">
+                        <i class="fa fa-facebook"></i> Sanggar Ronggo Adi Wiyasa
+                    </a>
+                </p>
+                <p>
+                    <a href="https://www.instagram.com/sanggarronggoadiwiyasa" target="_blank">
+                        <i class="fa fa-instagram"></i> @sanggarronggoadiwiyasa
+                    </a>
+                </p>
+                <p>
+                    <a href="https://twitter.com/Sanggar_Ronggoadiwiyasa" target="_blank">
+                        <i class="fa fa-twitter"></i> @Sanggar_Ronggoadiwiyasa
+                    </a>
+                </p>
             </div>
             <div class="footer-section address">
             <h3>Address</h3>

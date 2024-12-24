@@ -16,7 +16,7 @@
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-            
+
                 @error('email')
                     <div class="error-feedback" style="color: #e36b6b; font-weight: bold; text-align: center; margin-bottom: 10px; background-color: #dededc; padding: 10px; border-radius: 5px;">
                         {{ $message }}
@@ -49,7 +49,7 @@
             </form>
 
             <div class="home-link">
-                <a href="{{ url('/') }}" class="btn btn-secondary btn-sm">Back to Home</a>
+                <a href="{{ url('/') }}" class="btn btn-secondary btn-sm" style="background-color: #213555">Back to Home</a>
             </div>
         </div>
     </div>

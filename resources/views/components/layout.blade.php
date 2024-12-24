@@ -10,10 +10,17 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="{{ url('/css/crud.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" href="{{ url('/dashboard') }}">RONGGO ADI WIYASA</a>
+        <a class="navbar-brand ps-3" href="{{ url('/dashboard') }}">
+            <div class="scrolling-wrapper">
+                <div class="scrolling-text" id="scrolling-text">
+                    RONGGO ADI WIYASA
+                </div>
+            </div>
+        </a>
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
             <i class="fas fa-bars"></i>
         </button>
@@ -64,26 +71,30 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="{{ url('/kas') }}">List Kas</a>
                                 <a class="nav-link" href="{{ url('/kas/create') }}">Tambah Kas</a>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePemasukan" aria-expanded="false" aria-controls="collapsePemasukan">
-                                    Pemasukan
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="collapsePemasukan" data-bs-parent="#collapseKas">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="{{ url('/pemasukan') }}">List Pemasukan</a>
-                                        <a class="nav-link" href="{{ url('/pemasukan/create') }}">Tambah Pemasukan</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePengeluaran" aria-expanded="false" aria-controls="collapsePengeluaran">
-                                    Pengeluaran
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="collapsePengeluaran" data-bs-parent="#collapseKas">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="{{ url('/pengeluaran') }}">List Pengeluaran</a>
-                                        <a class="nav-link" href="{{ url('/pengeluaran/create') }}">Tambah Pengeluaran</a>
-                                    </nav>
-                                </div>
+                            </nav>
+                        </div>
+                        <!-- Pemasukan Dropdown -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePemasukan" aria-expanded="false" aria-controls="collapsePemasukan">
+                            <div class="sb-nav-link-icon"><i class="fas fa-money-bill-alt"></i></div>
+                            Pemasukan
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePemasukan" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ url('/pemasukan') }}">List Pemasukan</a>
+                                <a class="nav-link" href="{{ url('/pemasukan/create') }}">Tambah Pemasukan</a>
+                            </nav>
+                        </div>
+                        <!-- Pengeluaran Dropdown -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePengeluaran" aria-expanded="false" aria-controls="collapsePengeluaran">
+                            <div class="sb-nav-link-icon"><i class="fas fa-receipt"></i></div>
+                            Pengeluaran
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePengeluaran" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ url('/pengeluaran') }}">List Pengeluaran</a>
+                                <a class="nav-link" href="{{ url('/pengeluaran/create') }}">Tambah Pengeluaran</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAbsensi" aria-expanded="false" aria-controls="collapseAbsensi">
@@ -97,6 +108,22 @@
                                 <a class="nav-link" href="{{ url('/laporan-absensi') }}">Laporan Absensi</a>
                             </nav>
                         </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseJadwal" aria-expanded="false" aria-controls="collapseJadwal">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Jadwal Kegiatan
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseJadwal" aria-labelledby="headingJadwal" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="{{ url('/jadwals') }}">List Kegiatan</a>
+                                <a class="nav-link" href="{{ url('/jadwals/create') }}">Tambah Kegiatan</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading mt-3">Grafik</div>
+                        <a class="nav-link" href="{{ url('/charts/area') }}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Chart
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

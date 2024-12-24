@@ -8,15 +8,6 @@
             <form action="{{ route('pemasukan.store') }}" method="POST">
                 @csrf
 
-                <!-- ID -->
-                <div class="form-group mt-3">
-                    <label for="id">ID:</label>
-                    <input type="text" class="form-control @error('id') is-invalid @enderror" id="id" name="id" value="{{ old('id') }}" required>
-                    @error('id')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
                 <!-- Pemasukan -->
                 <div class="form-group mt-3">
                     <label for="pemasukan">Pemasukan:</label>

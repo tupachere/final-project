@@ -12,7 +12,6 @@ class Pemasukan extends Model
     protected $table = 'pemasukan';
     protected $primaryKey = 'id';
     public $incrementing = True;
-    protected $keyType = 'string';
     protected $fillable = [
         'id', // Tambahkan kolom id pada $fillable
         'pemasukan',

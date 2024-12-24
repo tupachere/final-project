@@ -17,8 +17,8 @@
                         <input type="date" id="end_date" name="end_date" class="form-control" value="{{ request('end_date') }}">
                     </div>
                     <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary mt-4">Filter</button>
-                        <a href="{{ route('absensi.laporan') }}" class="btn btn-secondary mt-4">hapus</a>
+                        <button type="submit" id="btns" class="btn btn-secondary mt-4">Filter</button>
+                        <a href="{{ route('absensi.laporan') }}" id="btnp" class="btn btn-secondary mt-4">hapus</a>
                     </div>
                 </div>
             </form>

@@ -41,26 +41,26 @@
                                 <td>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio"
-                                               name="absensi[{{ $anggota->id }}][status]"
-                                               id="hadir_{{ $anggota->id }}"
-                                               value="hadir"
-                                               {{ old('absensi.'.$anggota->id.'.status') == 'hadir' ? 'checked' : '' }} required>
+                                            name="absensi[{{ $anggota->id }}][status]"
+                                            id="hadir_{{ $anggota->id }}"
+                                            value="hadir"
+                                            {{ old('absensi.'.$anggota->id.'.status') == 'hadir' ? 'checked' : '' }} required>
                                         <label class="form-check-label" for="hadir_{{ $anggota->id }}">Hadir</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio"
-                                               name="absensi[{{ $anggota->id }}][status]"
-                                               id="tidak_hadir_{{ $anggota->id }}"
-                                               value="tidak hadir"
-                                               {{ old('absensi.'.$anggota->id.'.status') == 'tidak hadir' ? 'checked' : '' }}>
+                                            name="absensi[{{ $anggota->id }}][status]"
+                                            id="tidak_hadir_{{ $anggota->id }}"
+                                            value="tidak hadir"
+                                            {{ old('absensi.'.$anggota->id.'.status') == 'tidak hadir' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="tidak_hadir_{{ $anggota->id }}">Tidak Hadir</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio"
-                                               name="absensi[{{ $anggota->id }}][status]"
-                                               id="izin_{{ $anggota->id }}"
-                                               value="izin"
-                                               {{ old('absensi.'.$anggota->id.'.status') == 'izin' ? 'checked' : '' }}>
+                                            name="absensi[{{ $anggota->id }}][status]"
+                                            id="izin_{{ $anggota->id }}"
+                                            value="izin"
+                                            {{ old('absensi.'.$anggota->id.'.status') == 'izin' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="izin_{{ $anggota->id }}">Izin</label>
                                     </div>
                                     @error('absensi.'.$anggota->id.'.status')
